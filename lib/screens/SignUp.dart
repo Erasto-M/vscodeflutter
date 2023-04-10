@@ -6,11 +6,13 @@ class Login extends StatefulWidget {
   @override
   State<Login> createState() => _LoginState();
 }
-g
+
 class _LoginState extends State<Login> {
   final _fnameController = TextEditingController();
   final _lnameController = TextEditingController();
   String? _fullName;
+  var counter;
+  var num = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -19,51 +21,63 @@ class _LoginState extends State<Login> {
         title: const Text("Calc era"),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          const SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                TextFormField(
-                  controller: _fnameController,
-                  decoration:  InputDecoration(
-                    hintText: "First Name",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  TextFormField(
+                    controller: _fnameController,
+                    decoration: InputDecoration(
+                      hintText: "First Name",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 10),
-                TextFormField(
-                  controller: _lnameController,
-                  decoration:  InputDecoration(
-                    hintText: "Last Name",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                  const SizedBox(height: 10),
+                  TextFormField(
+                    controller: _lnameController,
+                    decoration: InputDecoration(
+                      hintText: "Last Name",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _fullName =
-                          '${_fnameController.text} ${_lnameController.text}';
-                    });
-                  },
-                  child: const Text("Submit details"),
-                ),
-                if (_fullName != null) ...[
                   const SizedBox(height: 20),
-                  Text(_fullName!),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _fullName =
+                            '${_fnameController.text} ${_lnameController.text}';
+                      });
+                    },
+                    child: const Text("Submit details"),
+                  ),
+                  if (_fullName != null) ...[
+                    const SizedBox(height: 20),
+                    Text(_fullName!),
+                  ],
+                  SizedBox(height: 20,),
+                  Text(num.toString()),
                 ],
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            num+=2;
+          });
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

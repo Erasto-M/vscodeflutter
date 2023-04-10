@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class Login1 extends StatefulWidget {
+  const Login1({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Login1> createState() => _Login1State();
 }
-g
-class _LoginState extends State<Login> {
+class _Login1State extends State<Login1> {
   final _fnameController = TextEditingController();
   final _lnameController = TextEditingController();
   String? _fullName;

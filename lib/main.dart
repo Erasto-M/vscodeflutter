@@ -1,3 +1,5 @@
+import 'package:calc/screens/Calc.dart';
+import 'package:calc/screens/SignUp.dart';
 import 'package:calc/screens/login.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return   MaterialApp(
-      home: Login(),
+      home: MyCalc(),
       debugShowCheckedModeBanner: false,
     );
   }
