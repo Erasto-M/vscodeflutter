@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyCalc extends StatefulWidget {
-  const MyCalc({super.key});
+  const MyCalc({Key? key}) : super(key: key);
 
   @override
   State<MyCalc> createState() => _MyCalcState();
@@ -98,6 +98,7 @@ class _MyCalcState extends State<MyCalc> {
                   })
             ],
           ),
+          SizedBox(height: 10,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -137,6 +138,11 @@ class _MyCalcState extends State<MyCalc> {
   }
 
   Widget showbutton({required dynamic symbol, required Function function}) {
-    return ElevatedButton(onPressed: function(), child: symbol);
-  }
+  return ElevatedButton(
+      onPressed: () {
+        function();
+      },
+      child: Text(symbol)); // wrap the symbol in a Text widget
+}
+
 }
